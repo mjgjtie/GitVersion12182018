@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Assign task</string>
+    <string name="tab_text_1">Tasks</string>
+    <string name="tab_text_2">Todo Tasks</string>
+    <string name="tab_text_3">Done Tasks</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="facebook_app_id">359529887955644</string>
+    <string name="fb_login_protocol_scheme">fb359529887955644</string>
+
+</resources>
