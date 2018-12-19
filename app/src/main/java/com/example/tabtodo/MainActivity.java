@@ -1,6 +1,7 @@
 package com.example.tabtodo;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -22,6 +23,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -61,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
     private DrawerLayout mDrawerLayout;
+    private Intent intent;
 
 
     @Override
@@ -89,9 +92,9 @@ public class MainActivity extends AppCompatActivity {
 //
 //        show list task in Tab1task
 //        lstTask.insertTask("Design Task ");
-        lstTask.insertTask("KDK");
-        lstTask.insertTask("KDK1");
-        lstTask.insertTask("KDK2");
+//        lstTask.insertTask("KDK");
+//        lstTask.insertTask("KDK1");
+//        lstTask.insertTask("KDK2");
 //        show = (ListView) findViewById(R.id.test);
 //        showFrag1 = (ListView) findViewById(R.id.testTask) ;
 //        loadTaskList();
@@ -133,8 +136,24 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                menuItem.setChecked(true);
+//                menuItem.setChecked(true);
                 mDrawerLayout.closeDrawers();
+                switch (menuItem.getItemId()){
+                    case R.id.nav_schedule:
+                        Log.d("Click nav home","OKe");
+                        intent = new Intent(MainActivity.this,Calendar1task.class);
+                        startActivity(intent);
+                        menuItem.setChecked(true);
+                        mDrawerLayout.closeDrawers();
+                        return true;
+                    case R.id.nav_project:
+                        Log.d("Click nav schedule","OKe");
+                        intent = new Intent(MainActivity.this,Project1task.class);
+                        startActivity(intent);
+                        menuItem.setChecked(true);
+                        mDrawerLayout.closeDrawers();
+                        return true;
+                }
                 return true;
             }
         });
@@ -166,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_add_task:
                 final EditText taskEditText = new EditText(this);
                 AlertDialog dialog = new AlertDialog.Builder(this)
-                        .setTitle("Add new Task")
+                        .setTitle("Add New Task")
                         .setMessage("What do you want to do next ?")
                         .setView(taskEditText)
                         .setPositiveButton("Add", new DialogInterface.OnClickListener() {
