@@ -40,7 +40,7 @@ public class Main3Activity extends AppCompatActivity {
     ProfilePictureView profilePictureView;
     LoginButton loginButton;
     Button btndangxuat,btnchucnang;
-    TextView txtname,txtemail,txtfirstname;
+    TextView txtname,txtemail,txtfirstname,txtCreate;
     CallbackManager callbackManager;
     String name,email,firstname;
 
@@ -62,6 +62,18 @@ public class Main3Activity extends AppCompatActivity {
         loginButton.setReadPermissions(Arrays.asList("public_profile","email"));
         setLogin_Button();
         setLogout_Button();
+        changeWindown();
+        createAccount();
+
+
+
+//        btnchucnang.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(Main3Activity.this,MainActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
 //        try {
 //            PackageInfo info = getPackageManager().getPackageInfo(
@@ -94,6 +106,7 @@ public class Main3Activity extends AppCompatActivity {
                 txtfirstname.setText("");
                 profilePictureView.setProfileId(null);
                 loginButton.setVisibility(View.VISIBLE);
+
             }
         });
     }
@@ -123,6 +136,7 @@ public class Main3Activity extends AppCompatActivity {
             }
         });
     }
+
 
     private void result() {
         GraphRequest graphRequest = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
@@ -159,6 +173,7 @@ public class Main3Activity extends AppCompatActivity {
         txtname = (TextView) findViewById(R.id.textviewname);
         txtemail = (TextView) findViewById(R.id.textviewemail);
         txtfirstname = (TextView) findViewById(R.id.textviewfirstname);
+        txtCreate = (TextView) findViewById(R.id.createAccount);
     }
 
     @Override
@@ -171,5 +186,25 @@ public class Main3Activity extends AppCompatActivity {
     protected void onStart() {
         LoginManager.getInstance().logOut();
         super.onStart();
+    }
+
+    public void changeWindown(){
+        btnchucnang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Main3Activity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void createAccount(){
+        txtCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Main3Activity.this,Create1account.class);
+                startActivity(intent);
+            }
+        });
     }
 }
