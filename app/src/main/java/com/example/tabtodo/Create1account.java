@@ -48,7 +48,7 @@ public class Create1account extends AppCompatActivity {
                 user = String.valueOf(username.getText());
                 pass = String.valueOf(passwrod.getText());
                 lstAccount.insertAccount(full,user,pass);
-                Intent intent = new Intent(Create1account.this,Main3Activity.class);
+                Intent intent = new Intent(Create1account.this,MainActivity.class);
                 startActivity(intent);
             }
         });

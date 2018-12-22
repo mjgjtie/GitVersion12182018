@@ -65,27 +65,27 @@
         android:id="@+id/textviewname"
         android:layout_gravity="center"
         android:text="Name"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="5dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textviewemail"
         android:layout_gravity="center"
         android:text="Email"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="5dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textviewfirstname"
         android:layout_gravity="center"
         android:text="First Name"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="5dp"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Cac chuc nang"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:id="@+id/btn_chucnang"/>
 
 </LinearLayout>
