@@ -15,6 +15,7 @@
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="352dp" />-->
 
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -36,6 +37,13 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+    <ListView
+        android:id="@+id/lstproject"
+        android:layout_width="wrap_content"
+        android:layout_height="350dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginBottom="1dp"
+       ></ListView>
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"

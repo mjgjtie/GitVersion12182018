@@ -69,7 +69,7 @@ public class Main2Activity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 String task = String.valueOf(taskEditText.getText());
-                                lstTask.insertTask(task);
+//                                lstTask.insertTask(task);
                             }
                         })
                         .setNegativeButton("Cancel",null)

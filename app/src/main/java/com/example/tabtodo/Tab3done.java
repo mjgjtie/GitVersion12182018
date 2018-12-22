@@ -18,7 +18,7 @@ public class Tab3done extends ListFragment {
         View rootView = inflater.inflate(R.layout.tab3done, container, false);
         dbTasks db = new dbTasks(getActivity());
 
-        ArrayList<String> lst = db.getTaskList();
+        ArrayList<String> lst = db.getProjectList();
         test = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,lst);
         setListAdapter(test);
 

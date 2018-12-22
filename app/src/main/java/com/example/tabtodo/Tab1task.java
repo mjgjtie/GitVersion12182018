@@ -46,7 +46,7 @@ public class Tab1task extends ListFragment {
 //        showTask = (ListView)getView().findViewById(R.id.listTest);
         View rootView = inflater.inflate(R.layout.tab1task, container, false);
         dbTasks db = new dbTasks(getActivity());
-        ArrayList<String> lst = db.getTaskList();
+        ArrayList<String> lst = db.getAccountList();
         test = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,lst);
         setListAdapter(test);
         //        test = new ArrayAdapter<String>(getActivity(),R.layout.row,lst);

@@ -44,9 +44,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<String> test ;
     ListView show;
     ListView showFrag1;
-
-
-
+    TextView txt;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -80,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.main_content);
+        txt = (TextView) findViewById(R.id.txt_username);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
@@ -88,6 +87,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         lstTask = new dbTasks(this);
+
+        lstTask.insertAccount("Vox Quang Thien","admin","123456");
+        lstTask.insertProject("Vox QUang Thien");
+        lstTask.insertTask("Task 1","","");
+
 
 //
 //        show list task in Tab1task
@@ -192,7 +196,8 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 String task = String.valueOf(taskEditText.getText());
-                                lstTask.insertTask(task);
+//                                lstTask.insertTask(task);
+                                lstTask.insertTask(task,"","");
                                 loadTaskList();
                             }
                         })
@@ -261,7 +266,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public ArrayList<String> loadTaskList(){
-        ArrayList<String> taskList = lstTask.getTaskList();
+        ArrayList<String> taskList = lstTask.getAccountList();
         if (test == null) {
             test = new ArrayAdapter<String>(this, R.layout.row, R.id.tasktitle, taskList);
 //            show.setAdapter(mAdapter);

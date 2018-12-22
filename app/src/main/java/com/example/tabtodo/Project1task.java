@@ -19,16 +19,35 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class Project1task extends AppCompatActivity {
     private ViewPager mViewPager;
     private DrawerLayout mDrawerLayout;
     private Intent intent;
+
+    Button btn;
+    ArrayAdapter<String> test;
+    ListView showTask;
+    ArrayList<String> lst;
+    dbTasks db ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project1task);
+
+        db = new dbTasks(this);
+        ArrayList<String> lst = db.getProjectList();
+        showTask = (ListView) findViewById(R.id.lstproject);
+        test = new ArrayAdapter<String>(Project1task.this,R.layout.row, R.id.tasktitle,lst);
+        showTask.setAdapter(test);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
@@ -100,16 +119,16 @@ public class Project1task extends AppCompatActivity {
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
             case R.id.action_add_task:
-                final EditText taskEditText = new EditText(this);
+                final EditText projectEditText = new EditText(this);
                 AlertDialog dialog = new AlertDialog.Builder(this)
                         .setTitle("Add New Project")
                         .setMessage("What the of your project ?")
-                        .setView(taskEditText)
+                        .setView(projectEditText)
                         .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                String task = String.valueOf(taskEditText.getText());
-
+                                String project = String.valueOf(projectEditText.getText());
+                                db.insertProject(project);
                             }
                         })
                         .setNegativeButton("Cancel",null)
@@ -120,6 +139,20 @@ public class Project1task extends AppCompatActivity {
 
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public ArrayList<String> loadProject(){
+        ArrayList<String> taskList = db.getProjectList();
+        if (test == null) {
+            test = new ArrayAdapter<String>(Project1task.this, R.layout.row, R.id.tasktitle, taskList);
+            showTask.setAdapter(test);
+
+        }else {
+            test.clear();
+            test.addAll(taskList);
+            test.notifyDataSetChanged();
+        }
+        return taskList;
     }
 
 }
